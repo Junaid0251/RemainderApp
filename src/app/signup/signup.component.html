@@ -1,0 +1,38 @@
+<body>
+    <div class="container">
+        <div class="card">
+            <form [formGroup]="registerForm" (ngSubmit)="signup()">
+                <div class="inside-fom">
+                  <div class="heading">
+                      <h4 style="text-align: center; margin-bottom: 10px;">Sign Up</h4>
+                  </div>
+                  
+                  <div  class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input style="width: 100%;" name="email" type="email" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text"></div>
+                  </div>
+                  
+                  <div *ngIf="this.registerForm.get('email')?.touched&&this.registerForm.get('email')?.errors" style="color: red;">Invalid Email</div>
+                  
+                  <div class="mb-3 name-field">
+                      <label for="exampleInputname" class="form-label">Name</label><br>
+                      <input style="width: 100%;" name="name" type="text" formControlName="name" id="exampleInputname">
+                    </div>
+                    <div *ngIf="this.registerForm.get('name')?.touched&&this.registerForm.get('name')?.errors" style="color: red;">Invalid Name</div>
+                  
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label><br>
+                    <input style="width: 100%;" name="password" type="password" formControlName="password" id="exampleInputPassword1">
+                  </div>
+                  <div *ngIf="this.registerForm.get('password')?.touched&&this.registerForm.get('password')?.errors" style="color: red;">Invalid Password</div>
+                  
+                  <button type="submit" class="btn btn-dark" style="width: 100px;">Sign up</button>
+                  <div class="mt-2">
+                      <a style="text-decoration: none;color: blue;" routerLink="/login">Already have an account Login</a>
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+</body>
