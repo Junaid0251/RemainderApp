@@ -1,0 +1,16 @@
+<form class="form">
+  <div class="mb-3">
+    <label for="event" class="form-label">Email</label>
+    <input type="text" name="email" [(ngModel)]="email" class="form-control" id="exampleemail" >
+  </div>
+    <div class="mb-3">
+      <label for="event" class="form-label">Event</label>
+      <input type="text" name="event" [(ngModel)]="event" class="form-control" id="exampleevent" >
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" name="date" [(ngModel)]="date" class="form-control" id="exampledate">
+      </div>
+    
+    <button (click)="add()" type="submit" class="btn btn-primary">ADD</button>
+  </form>

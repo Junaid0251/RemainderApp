@@ -9,6 +9,7 @@ import { DataserviceService } from '../service/dataservice.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  currentEmail:any
 
   loginform = this.fb.group({
     email:['',[Validators.required,Validators.pattern('[a-zA-Z@.0-9]*')]],
@@ -30,6 +31,12 @@ export class LoginComponent implements OnInit {
     this.ds.login(email,password)
     .subscribe((result:any)=>{
       if(result){
+        
+        console.log(result.email);
+        
+        localStorage.setItem('currentEmail',JSON.stringify(result.currentemail))
+        localStorage.setItem('currentUser',JSON.stringify(result.currentUser))
+        localStorage.setItem('token',JSON.stringify(result.token))
         this.router.navigateByUrl('/dashboard')
       }
     },result=>{

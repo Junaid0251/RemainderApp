@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>EVENT</th>
+        <th>DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of event">
+        <th>{{e.event}}</th>
+        <th>{{e.date}}</th>
+        <th><button (click)="delete()" mat-raised-button color="primary">DELETE</button></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="display:flex;justify-content: center;margin-top: 70px;">
+    <a style="text-decoration: none;color: white;" routerLink="/dashboard">
+    <div style="text-align: center;background-color: blue; width: 100px; height: 20px; border-radius: 5px;">
+      Home
+    </div></a>
+
+  </div>
+</div>
