@@ -20,14 +20,18 @@ export class AddEventComponent implements OnInit {
     let email=this.email;
     let event =this.event;
     let date = this.date;
+    
     // console.log(event);
     // console.log(email);
     this.ds.addEvent(email,event,date)
     .subscribe((result:any)=>{
       if(result){
+        
        alert(result.message);
        
       }
+    },result=>{
+      alert(result.error.message)
     })
   }
 

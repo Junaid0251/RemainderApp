@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
-
+const options ={
+  headers:new HttpHeaders()
+}
 
 
 @Injectable({
@@ -13,6 +15,7 @@ export class DataserviceService {
   // currentEmail=JSON.parse(localStorage.getItem("currentEmail")||'')
   currentEmail:any
   currentUser:any
+  date:any
 
   constructor(private http: HttpClient) { 
     // this.getDetails()
@@ -32,7 +35,7 @@ saveDetails(){
   // localStorage.setItem("database",JSON.stringify(this.database))
 
   if(this.currentEmail){
-    localStorage.setItem("currentAcno",JSON.stringify(this.currentEmail))
+    localStorage.setItem("currentEmail",JSON.stringify(this.currentEmail))
   }
 
 
@@ -55,6 +58,27 @@ saveDetails(){
 
 //   }
 // }
+
+
+
+//addd token to header
+getOptions(){
+    
+  //fetch token
+
+  const token =JSON.parse(localStorage.getItem("token")||"")
+
+  //create HttpHeader
+
+  let headers =new HttpHeaders
+
+  if(token){
+    headers = headers.append('x-access-token',token)
+    options.headers=headers;
+    
+  }
+  return options
+}
 
 
 
@@ -83,9 +107,6 @@ saveDetails(){
       password
     }
 
-    // this.saveData(email)
-   
-    
 
     //login api call
     return this.http.post('http://localhost:3000/login', data)
@@ -100,15 +121,36 @@ saveDetails(){
     console.log(data);
     
     //event add
-    return this.http.post('http://localhost:3000/addEvent', data)
+    return this.http.post('http://localhost:3000/addEvent', data,this.getOptions())
   }
+
+  //view event
 
   viewEvent(email:any){
     const data={
       email
       
     }
-    return this.http.post('http://localhost:3000/viewEvent', data)
+    return this.http.post('http://localhost:3000/viewEvent', data,this.getOptions())
+  }
+
+  
+  // cardView
+
+  cardView(email:any){
+    // this.date=JSON.parse(localStorage.getItem("currentDate")||"")
+    const data={
+      email
+      // date:this.date
+    }
+    return this.http.post('http://localhost:3000/cardView', data,this.getOptions())
+  }
+
+
+  //delete event
+
+  delete(email:any){
+    return this.http.delete('http://localhost:3000/deleteEvent/'+email)
   }
 
 

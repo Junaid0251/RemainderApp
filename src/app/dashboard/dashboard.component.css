@@ -34,7 +34,7 @@ div .main-body
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     /* background-color: rgb(255, 255, 255); */
 
     
@@ -45,7 +45,8 @@ div .main-body .row
 {
     /* background-color: lawngreen; */
     width: 80vw;
-    height: 80vh;
+    height: 100%;
+    margin-top: 30px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     
 }
@@ -56,6 +57,7 @@ div .main-body .row .left
     background-size: cover;
 
 }
+
 
 div .main-body .row .right
 {
@@ -74,9 +76,39 @@ div .main-body .row .right mat-card
 .event-body
 {
     /* background-color: blue; */
-    display: flex;
+    /* display: flex; */
     height: 70vh;
     width: 100%;
-    justify-content: end;
-    align-items: flex-end;
+    /* justify-content: end;
+    align-items: flex-end; */
+}
+
+.event-cards
+{
+    height: 64vh;
+    /* width: 100%; */
+    /* background-color: brown; */
+    padding-right: 30px;
+}
+
+.event-cards ul
+{
+    list-style: none;
+}
+
+.event-body .btns
+{
+    /* position: relative; */
+    /* margin-top: 100%; */
+    
+
+}
+
+.event-cards mat-card:hover
+{
+    transition: all 0.2s ease-out;
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+    /* cursor: pointer; */
+    /* margin-left: 100px; */
+    
 }

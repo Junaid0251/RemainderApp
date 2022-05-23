@@ -32,8 +32,10 @@ export class LoginComponent implements OnInit {
     .subscribe((result:any)=>{
       if(result){
         
-        console.log(result.email);
-        
+        // console.log(result.email);
+        // let today = new Date().toISOString().slice(0, 10)//to find the current date
+        // console.log(today);
+        // localStorage.setItem('curentDate',JSON.stringify(today))
         localStorage.setItem('currentEmail',JSON.stringify(result.currentemail))
         localStorage.setItem('currentUser',JSON.stringify(result.currentUser))
         localStorage.setItem('token',JSON.stringify(result.token))

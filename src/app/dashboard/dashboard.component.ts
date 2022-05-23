@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {MatDialog,MatDialogConfig} from "@angular/material/dialog"
 import { AddEventComponent } from './add-event/add-event.component';
 import { UpperCasePipe } from '@angular/common';
+import { DataserviceService } from '../service/dataservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +15,28 @@ export class DashboardComponent implements OnInit {
   loginDate :any
   // currentUser =JSON.parse(localStorage.getItem("currentUser")||"")
   user:any
-  
+  events:any
+  email:any
+  Date:any
   
   
   
 
-  constructor(private router:Router , private dialog:MatDialog) { }
+  constructor(private router:Router , private dialog:MatDialog ,private ds:DataserviceService) {
+
+    this.email=JSON.parse(localStorage.getItem("currentEmail")||"")
+    this.events =this.ds.cardView(this.email)
+    .subscribe((result:any)=>{
+      if(result){
+        this.events=result.event
+        
+      }
+    },result=>{
+      alert(result.error.message)
+    })
+    
+
+   }
 
   ngOnInit(): void {
     this.loginDate=new Date()
